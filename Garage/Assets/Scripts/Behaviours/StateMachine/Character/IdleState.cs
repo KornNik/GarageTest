@@ -2,7 +2,7 @@
 
 namespace Behaviours.States
 {
-    class IdleState : CharacterState
+    sealed class IdleState : CharacterState
     {
         public IdleState(CharacterStateController characterStateController) : base(characterStateController)
         {
@@ -10,10 +10,12 @@ namespace Behaviours.States
         }
         public override void EnterState()
         {
+            base.EnterState();
         }
 
         public override void ExitState()
         {
+            base.ExitState();
         }
 
         public override void LogicFixedUpdate()
@@ -30,9 +32,8 @@ namespace Behaviours.States
         protected override void InputHandle()
         {
             base.InputHandle();
-            var isMoving = _inputController.InputActions.
+            var isMoving = _inputs.InputsActions.
                 PlayerActionList[InputActionManagerPlayer.MOVEMENT].IsPressed();
-
             if (isMoving)
             {
                 _stateController.ChangeState(_stateController.MovementState);

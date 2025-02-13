@@ -10,7 +10,7 @@ namespace Behaviours
         public void Initialization()
         {
             var audioControllerPrefab = Services.Instance.DatasBundle.ServicesObject.
-                GetData<ResourcesDataPrefabs>().GetScreenPrefab(ScreenTypes.Canvas);
+                GetData<ResourcesDataPrefabs>().GetAudioPrefab(AudioTypes.AudioController);
             var audioController = GameObject.Instantiate(audioControllerPrefab).GetComponent<AudioController>();
 
             Services.Instance.AudioController.SetObject(audioController);

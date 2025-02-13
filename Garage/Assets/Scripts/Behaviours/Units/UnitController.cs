@@ -16,16 +16,16 @@ namespace Behaviours.Units
         {
 
         }
-        private void Update()
+        public void UpdateInGameState()
         {
             _model.CharacterStateController.Update();
         }
-        private void FixedUpdate()
+        public void FixedUpdateInGameState()
         {
             _model.CharacterStateController.FixedUpdate();
         }
 
-        private void LateUpdate()
+        public void LateUpdateInGameState()
         {
             _model.CharacterStateController.LateUpdate();
         }

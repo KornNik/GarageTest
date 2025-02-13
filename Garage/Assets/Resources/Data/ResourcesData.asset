@@ -19,7 +19,7 @@ MonoBehaviour:
     Gameobject: {fileID: 8460954994891623692, guid: 20a01256c8dea064185f2c0fe2ca5e33, type: 3}
   - Type: 2
     Gameobject: {fileID: 7970510424411973072, guid: 491ad64f4e8cbbf45b359bf5fb6e0c6f, type: 3}
-  - Type: 4
+  - Type: 3
     Gameobject: {fileID: 705034182132744932, guid: f9f4f3b8f84a68e478c95d6f6d7cdf40, type: 3}
   _audioPrefabs:
   - Type: 3

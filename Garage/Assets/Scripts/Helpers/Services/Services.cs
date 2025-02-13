@@ -4,6 +4,7 @@ using Behaviours;
 using Controllers;
 using Data;
 using Behaviours.Units;
+using Helpers.Extensions;
 
 namespace Helpers
 {
@@ -21,7 +22,7 @@ namespace Helpers
         public Service<PlayerLoader> PlayerLoader { get; private set; }
         public Service<GameStateBehaviour> GameStateBehavior { get; private set; }
         public Service<UnitController> PlayerService { get; private set; }
-        public Service<InputController> InputController { get; private set; }
+        public Service<InputActions> Inputs { get; private set; }
         public Service<Level> LevelService { get; private set; }
 
         public Services()
@@ -40,7 +41,7 @@ namespace Helpers
             GameStateBehavior = new Service<GameStateBehaviour>();
             PlayerLoader = new Service<PlayerLoader>();
             PlayerService = new Service<UnitController>();
-            InputController = new Service<InputController>();
+            Inputs = new Service<InputActions>();
             LevelService = new Service<Level>();
         }
 

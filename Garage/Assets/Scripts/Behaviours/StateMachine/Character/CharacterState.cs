@@ -1,18 +1,18 @@
-﻿using Controllers;
-using Helpers;
-using System;
-using UnityEngine.InputSystem;
-
+﻿using Inputs;
 
 namespace Behaviours.States
 {
     abstract class CharacterState : BaseState<CharacterStateController>
     {
-        protected InputController _inputController;
+        protected BaseInputs _inputs;
         protected CharacterState(CharacterStateController stateController) : base()
         {
             _stateController = stateController;
-            _inputController = Services.Instance.InputController.ServicesObject;
+            _inputs = new InputFactory().GetInputs(_stateController.StateObject);
+        }
+        public override void EnterState()
+        {
+            base.EnterState();
         }
         public override void LogicUpdate()
         {
@@ -26,31 +26,7 @@ namespace Behaviours.States
         }
         protected virtual void InputHandle()
         {
-            Interact();
-            Inspect();
-        }
-
-        private void Interact()
-        {
-            var isInteracting = _inputController.InputActions.
-                PlayerActionList[InputActionManagerPlayer.INTERACT].IsPressed();
-            if (isInteracting)
-            {
-                _stateController.StateObject.Interacter.CheckInteraction();
-            }
-        }
-        private void Inspect()
-        {
-            var isInspecting = _inputController.InputActions.
-                PlayerActionList[InputActionManagerPlayer.INSPECT].IsPressed();
-            if (isInspecting)
-            {
-                _stateController.StateObject.PickUp.StartInspection();
-            }
-            else
-            {
-                _stateController.StateObject.PickUp.StopInspection();
-            }
+            _inputs.Update();
         }
         private void MakeRotation()
         {

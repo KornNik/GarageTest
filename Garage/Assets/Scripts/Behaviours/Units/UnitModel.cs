@@ -19,8 +19,6 @@ namespace Behaviours.Units
         protected CharacterStateController _characterStateController;
 
 
-        protected List<IEventSubscription> _subsciptions;
-
         public ItemsPickUp PickUp => _pickUp;
         public Collider Collider => _collider;
         public UnitData UnitData => _unitData;
@@ -36,31 +34,17 @@ namespace Behaviours.Units
         }
         protected virtual void InitializeComponents()
         {
-            _subsciptions = new List<IEventSubscription>(5);
             _unitAttributes = new UnitAttributesContainer(this);
             _characterStateController = new CharacterStateController(this);
             _interacter = new CharacterInteraction(this);
             _pickUp = new ItemsPickUp(this);
 
-            FillSubscriptions();
         }
         private void OnEnable()
         {
-            foreach (var item in _subsciptions)
-            {
-                item.Subscribe();
-            }
         }
         private void OnDisable()
         {
-            foreach (var item in _subsciptions)
-            {
-                item.Unsubscribe();
-            }
-        }
-        private void FillSubscriptions()
-        {
-
         }
     }
 }

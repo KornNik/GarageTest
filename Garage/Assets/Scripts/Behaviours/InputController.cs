@@ -5,7 +5,7 @@ using Data;
 
 namespace Controllers
 {
-    internal class InputController
+    sealed class InputController
     {
         private InputActionAsset _playerActionsAsset;
         private InputActionMap _playerActionMap;

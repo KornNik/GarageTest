@@ -8,7 +8,7 @@ namespace Behaviours
         public void Initialization()
         {
             var inputController = new InputController();
-            Services.Instance.InputController.SetObject(inputController);
+            Services.Instance.Inputs.SetObject(inputController.InputActions);
         }
     }
 }

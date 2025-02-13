@@ -1,8 +1,10 @@
-﻿namespace Behaviours
+﻿using Behaviours.Items;
+
+namespace Behaviours
 {
     interface IInspecter
     {
-        void StartInspection();
+        void StartInspection(IItem item);
         void StopInspection();
     }
 }

@@ -7,8 +7,7 @@ namespace Controllers
 {
     sealed class AudioController : MonoBehaviour
     {
-        private AudioSource _audioSourceBackground;
-        private AudioSource _audioSourcePoolablePrefab;
+
         private AudioMixerVolumeMuter _audioMixerMuter;
 
         private AudioClip _audioClip;
@@ -17,24 +16,18 @@ namespace Controllers
 
         public void Awake()
         {
-            _audioSourceBackground = Services.Instance.DatasBundle.ServicesObject.
-                GetData<ResourcesDataPrefabs>().GetAudioPrefab
-                (AudioTypes.BackgroundSourcePrefab).GetComponent<AudioSource>();
-            _audioSourcePoolablePrefab = Services.Instance.DatasBundle.ServicesObject.
-                GetData<ResourcesDataPrefabs>().GetAudioPrefab
-                (AudioTypes.PoolableSourcePrefab).GetComponent<AudioSource>();
-
-            _audioSourcePool = new AudioSourcePool(_audioSourcePoolablePrefab);
+            _audioSourcePool = new AudioSourcePool();
             _audioEventsHandler = new AudioEventsHandler();
             _audioMixerMuter = Services.Instance.DatasBundle.ServicesObject.GetData<AudioMixerVolumeMuter>();
+
         }
-        
-        private void Update()
+        private void OnEnable()
         {
-            if (!_audioSourceBackground.isPlaying && !ReferenceEquals(_audioClip,null))
-            {
-                _audioClip = null;
-            }
+            _audioEventsHandler.Subscribe();   
+        }
+        private void OnDisable()
+        {
+            _audioEventsHandler.Unsubscribe();
         }
 
         public void PlaySound(SoundEventInfo soudnInfo)

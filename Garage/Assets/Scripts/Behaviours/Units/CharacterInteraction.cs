@@ -29,7 +29,7 @@ namespace Behaviours.Units
             {
                 for (int i = 0; i < hits; i++)
                 {
-                    var interactable = results[i].collider.gameObject.GetComponent<IInteractable<Transform>>();
+                    var interactable = results[i].collider.gameObject.GetComponent<IInteractable>();
                     if (interactable != null)
                     {
                         MakeInteraction(interactable);
@@ -40,9 +40,9 @@ namespace Behaviours.Units
             return false;
         }
 
-        public void MakeInteraction(IInteractable<Transform> interactable)
+        public void MakeInteraction(IInteractable interactable)
         {
-            interactable.Interact(_unitModel.transform);
+            interactable.Interact();
         }
     }
 }

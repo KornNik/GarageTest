@@ -5,28 +5,7 @@ namespace Helpers.Extensions
 {
     sealed class InputActions
     {
-        private InputAction _fire;
-        private InputAction _move;
-        private InputAction _aim;
-        private InputAction _jump;
-        private InputAction _look;
-        private InputAction _interact;
-        private InputAction _reload;
-        private InputAction _holster;
-        private InputAction _run;
-        private InputAction _inspect;
         private Dictionary<string, InputAction> _playerActionList = new Dictionary<string, InputAction>();
-
-        public InputAction Fire => _fire;
-        public InputAction Move => _move;
-        public InputAction Aim => _aim;
-        public InputAction Jump => _jump;
-        public InputAction Look => _look;
-        public InputAction Run => _run;
-        public InputAction Reload => _reload;
-        public InputAction Holster => _holster;
-        public InputAction Inspect => _inspect;
-        public InputAction Interact  => _interact; 
 
         public Dictionary<string, InputAction> PlayerActionList => _playerActionList;
 
@@ -48,18 +27,6 @@ namespace Helpers.Extensions
             _playerActionList.Add(InputActionManagerPlayer.RELOAD, playerActionMap.FindAction(InputActionManagerPlayer.RELOAD));
             _playerActionList.Add(InputActionManagerPlayer.HOLSTER, playerActionMap.FindAction(InputActionManagerPlayer.HOLSTER));
             _playerActionList.Add(InputActionManagerPlayer.RUN, playerActionMap.FindAction(InputActionManagerPlayer.RUN));
-
-            _fire = playerActionMap.FindAction(InputActionManagerPlayer.FIRE);
-            _move = playerActionMap.FindAction(InputActionManagerPlayer.MOVEMENT);
-            _aim = playerActionMap.FindAction(InputActionManagerPlayer.AIM);
-            _jump = playerActionMap.FindAction(InputActionManagerPlayer.JUMP);
-            _look = playerActionMap.FindAction(InputActionManagerPlayer.LOOK);
-            _inspect = playerActionMap.FindAction(InputActionManagerPlayer.INSPECT);
-            _reload = playerActionMap.FindAction(InputActionManagerPlayer.RELOAD);
-            _holster = playerActionMap.FindAction(InputActionManagerPlayer.HOLSTER);
-            _run = playerActionMap.FindAction(InputActionManagerPlayer.RUN);
-            _interact = playerActionMap.FindAction(InputActionManagerPlayer.INTERACT);
-
         }
     }
 }

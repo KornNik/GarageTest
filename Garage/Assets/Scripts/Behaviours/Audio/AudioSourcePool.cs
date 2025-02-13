@@ -1,10 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using Data;
+using Helpers;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Behaviours
 {
     sealed class AudioSourcePool
     {
+
         private readonly AudioSource _prefab;
 
         private readonly Queue<AudioSource> _audioSources = new Queue<AudioSource>();
@@ -13,9 +16,11 @@ namespace Behaviours
 
         private int _lastCheckFrame = -1;
 
-        public AudioSourcePool(AudioSource prefab)
+        public AudioSourcePool()
         {
-            _prefab = prefab;
+            _prefab = Services.Instance.DatasBundle.ServicesObject.
+                GetData<ResourcesDataPrefabs>().GetAudioPrefab
+                (AudioTypes.PoolableSourcePrefab).GetComponent<AudioSource>();
         }
 
         private void CheckInUse()

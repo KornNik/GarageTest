@@ -13,6 +13,7 @@ namespace Controllers
         {
             UnLockedCursor();
             LockedFPS();
+            SetOrientation();
         }
         private void LockedFPS()
         {
@@ -28,6 +29,11 @@ namespace Controllers
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+        }
+        private void SetOrientation()
+        {
+            Screen.orientation = ScreenOrientation.LandscapeLeft;
+            Screen.autorotateToLandscapeLeft = true;
         }
     }
 }

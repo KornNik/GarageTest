@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Behaviours.Items
 {
     [RequireComponent(typeof(Collider))]
-    sealed class Door : MonoBehaviour, IMovable, IInteractable<Transform>
+    sealed class Door : MonoBehaviour, IMovable, IInteractable
     {
         private static Vector3 OPENING_ROTATION = new Vector3(0, -80f, 0);
         private static Vector3 CLOSING_ROTATION = new Vector3(0, 0, 0);
@@ -14,7 +14,7 @@ namespace Behaviours.Items
         private bool _isAllowInteracte = true;
         private bool _isOpen = false;
 
-        public void Interact(Transform interactObject)
+        public void Interact()
         {
             if (_isAllowInteracte)
             {

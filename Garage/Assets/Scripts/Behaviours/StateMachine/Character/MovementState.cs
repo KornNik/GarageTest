@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Behaviours.States
 {
-    class MovementState : CharacterState
+    sealed class MovementState : CharacterState
     {
         public MovementState(CharacterStateController characterStateController) : 
             base(characterStateController)
@@ -28,9 +28,6 @@ namespace Behaviours.States
         public override void LogicUpdate()
         {
             base.LogicUpdate();
-            var movementInputs = _inputController.InputActions.PlayerActionList
-                [InputActionManagerPlayer.MOVEMENT].ReadValue<Vector2>();
-            _stateController.StateObject.Movement.Move(movementInputs);
         }
         public override void LogicLateUpdate()
         {
@@ -40,12 +37,14 @@ namespace Behaviours.States
         protected override void InputHandle()
         {
             base.InputHandle();
-            var isMoving = _inputController.InputActions.PlayerActionList
-                [InputActionManagerPlayer.MOVEMENT].IsPressed();
-            if(!isMoving)
-            {
-                _stateController.ChangeState(_stateController.IdleState);
-            }
+            var movementInputs = _inputs.InputsActions.PlayerActionList
+                [InputActionManagerPlayer.MOVEMENT].ReadValue<Vector2>();
+            Move(movementInputs);
+        }
+
+        private void Move(Vector2 input)
+        {
+            _stateController.StateObject.Movement.Move(input);
         }
     }
 }
