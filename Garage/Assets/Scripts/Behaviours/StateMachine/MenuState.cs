@@ -3,7 +3,7 @@ using UI;
 
 namespace Behaviours
 {
-    internal class MenuState : BaseState<GameStateController>
+    sealed class MenuState : BaseState<GameStateController>
     {
         public MenuState(GameStateController stateController) : base()
         {

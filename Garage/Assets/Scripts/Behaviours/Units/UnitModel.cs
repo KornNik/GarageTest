@@ -1,6 +1,5 @@
 ﻿using Behaviours.States;
 using Data;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Behaviours.Units
@@ -39,12 +38,6 @@ namespace Behaviours.Units
             _interacter = new CharacterInteraction(this);
             _pickUp = new ItemsPickUp(this);
 
-        }
-        private void OnEnable()
-        {
-        }
-        private void OnDisable()
-        {
         }
     }
 }

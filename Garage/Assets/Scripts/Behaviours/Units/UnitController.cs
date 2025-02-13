@@ -1,16 +1,13 @@
-﻿using UI;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Behaviours.Units
 {
-    [RequireComponent(typeof(UnitModel),typeof(UnitView))]
+    [RequireComponent(typeof(UnitModel))]
     class UnitController : MonoBehaviour
     {
         [SerializeField] private UnitModel _model;
-        [SerializeField] private UnitView _view;
 
         public UnitModel Model => _model;
-        public UnitView View => _view;
 
         private void Awake()
         {
